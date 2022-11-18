@@ -6,15 +6,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { TopArtistsComponent } from './top-artists/top-artists.component';
-import { SearchComponent, SearchInputComponent } from './search-input/search-input.component';
+import { SearchInputComponent } from './search-input/search-input.component';
+import { SearchPageComponent } from './search-page/search-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     TopArtistsComponent,
-    SearchComponent,
-    SearchInputComponent
+    SearchInputComponent,
+    SearchPageComponent
   ],
   imports: [
     BrowserModule,

@@ -21,11 +21,21 @@ export class SearchInputComponent implements OnInit, OnDestroy {
   subscriptions: Subscription[] = [];
 
   constructor() { }
-  ngOnDestroy(): void {
-    throw new Error('Method not implemented.');
-  }
 
   ngOnInit(): void {
+    const subscription = this.trigger.subscribe(currentValue => 
+      {
+        this.textChange.emit(currentValue);
+      });
+      this.subscriptions.push(subscription);
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.forEach(sub => sub.unsubscribe());
+  }
+
+  onInput(e: any){
+    this.inputValue.next(e.target.value);
   }
 
 }
