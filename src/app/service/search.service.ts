@@ -5,17 +5,19 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class SearchService {
-  apiKey = "c35We3GBKCaoF21NOBOeDQobebn9ttQ8wtzq";
+  apiKey = "746bc9dc80924d48804b351fcba66356-87hbd7lFjPCkjQd91jtkgbNzR_6FE2lrfelE6r7zglgC7poxpj99h2WfwS_IfVP1tVyuueKJpi5JWz_4LP3Da059SDO1EQC-SUKHJdeQKDVjUmruRGZdlyC9tNSoI9Rk68i-Czw";
 
   constructor(private http: HttpClient) { }
 
   getResults(artist: string) {
     
-    let headers = new HttpHeaders().set('x-api-key:', this.apiKey)
-    .set('Accept:', 'application/json');
+    let headers = new HttpHeaders().set('Authorization:', this.apiKey)
+    .set('Content-Type:', 'application/json')
+    .set('Accept:', 'application/json')
+    .set('Authorization:', this.apiKey)
 
     return this.http.get(
-      "https://api.setlist.fm/rest/1.0/search/artists?artistName=" + artist + "&p=1&sort=relevance",
+      "https://api.spotify.com/v1/search?q="+ artist +"type=artist",
       {headers: headers}
     )
   }
