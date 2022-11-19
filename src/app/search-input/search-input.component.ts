@@ -1,41 +1,46 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
-import { debounceTime, distinctUntilChanged, Subject, Subscription } from 'rxjs';
+import { FormControl, FormGroup } from '@angular/forms';
+import { debounceTime, tap, finalize, filter, distinctUntilChanged, switchMap, Observable, startWith, map } from 'rxjs';
+import { SearchService } from '../service/search.service';
 
 @Component({
   selector: 'app-search-input',
   templateUrl: './search-input.component.html',
   styleUrls: ['./search-input.component.css']
 })
-export class SearchInputComponent implements OnInit, OnDestroy {
-  @Input() initialValue: string = "";
-  @Input() debounceTime = 300;
+export class SearchInputComponent implements OnInit{
 
-  @Output() textChange = new EventEmitter<string>();
 
-  inputValue = new Subject<string>();
-  trigger = this.inputValue.pipe(
-    debounceTime(this.debounceTime),
-    distinctUntilChanged()
-  );
+  myControl = new FormControl();
+  filteredOptions!: Observable<any[]>; 
+  options!: any[];
 
-  subscriptions: Subscription[] = [];
+  constructor(
+    private http: HttpClient,
+    private searchService: SearchService
+  ) {  
+    this.filteredOptions = this.myControl.valueChanges.pipe(
+      startWith(''),
+      debounceTime(300),
+      distinctUntilChanged(),
+      switchMap(val => {
+        return this.filter(val || '')
+      })
+    )
+  }
 
-  constructor() { }
+  
 
   ngOnInit(): void {
-    const subscription = this.trigger.subscribe(currentValue => 
-      {
-        this.textChange.emit(currentValue);
-      });
-      this.subscriptions.push(subscription);
   }
 
-  ngOnDestroy(): void {
-    this.subscriptions.forEach(sub => sub.unsubscribe());
+  filter(val: String): Observable<any[]> {
+    return this.searchService.getResults(val)
+    .pipe(
+      map(response => response.filter(option => {
+        return option.name.toLowerCase().indexOf(val.toLowerCase()) === 0
+      }))
+    )
   }
-
-  onInput(e: any){
-    this.inputValue.next(e.target.value);
-  }
-
 }
