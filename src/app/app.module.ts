@@ -13,13 +13,15 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatButtonModule } from '@angular/material';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     TopArtistsComponent,
-    SearchPageComponent
+    SearchPageComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,

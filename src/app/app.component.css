@@ -1,3 +1,15 @@
-app-login{
-    width: 100%;
+.row {
+    display: flex;
+}
+
+.column-left {
+    flex: 30%;
+    height: 100vh;
+    background-color: var(--bg2);
+}
+
+.column-right {
+    flex: 70%;
+    height: 100vh;
+    background-color: var(--mid);
 }
