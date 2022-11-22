@@ -9,6 +9,21 @@ import { SearchService } from '../service/search.service';
 })
 export class SearchPageComponent  {
   
-  
+  public artist! : string;
+
+
+  constructor(
+    private searchService : SearchService,
+
+  )
+  { }
+
+  Submit() {
+    this.searchService.getResults(this.artist).subscribe(
+      data => {
+        console.log(data);
+      }
+    )
+  }
 
 }

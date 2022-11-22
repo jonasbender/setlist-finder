@@ -7,7 +7,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { TopArtistsComponent } from './top-artists/top-artists.component';
-import { SearchInputComponent } from './search-input/search-input.component';
 import { SearchPageComponent } from './search-page/search-page.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
@@ -20,7 +19,6 @@ import { MatButtonModule } from '@angular/material';
     AppComponent,
     LoginComponent,
     TopArtistsComponent,
-    SearchInputComponent,
     SearchPageComponent
   ],
   imports: [

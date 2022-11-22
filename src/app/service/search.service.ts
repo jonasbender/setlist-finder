@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -11,9 +12,7 @@ export class SearchService {
 
   getResults(artist: string) {
     
-    let headers = new HttpHeaders().set('Authorization:', this.apiKey)
-    .set('Content-Type:', 'application/json')
-    .set('Accept:', 'application/json')
+    let headers = new HttpHeaders()
     .set('Authorization:', this.apiKey)
 
     return this.http.get(
