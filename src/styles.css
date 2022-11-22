@@ -1,1 +1,14 @@
-/* You can add global styles to this file, and also import other style files */
+
+body.light {
+    --bg1: #ffffff;
+    --bg2: #e6e6e6;
+    --mid: #d9d9d9;
+    --high: #262626;
+}
+
+body.light {
+    --bg1: #262626;
+    --bg2: #1f1f1f;
+    --mid: #8d8d8d;
+    --high: #d9d9d9;
+}
