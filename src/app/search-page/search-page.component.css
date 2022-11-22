@@ -1,0 +1,69 @@
+#searchbar::after{
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+/* SECTION #1
+  –––––––––––––––––––––––––––––––––––––––––––––––––– */
+  #top-banner {
+    
+    margin-top: 50px;
+  }
+
+  .wrapper {
+    background-color: var(--bgd-color);
+  }
+  
+  
+  input {
+    border: none;
+    background: none;
+    outline: none;
+    font-size: 1rem;
+    
+  }
+  
+  #top-banner form input::placeholder {
+    color: var(--text-color); 
+    font-family: ibmplex-regular;
+  }
+
+  .searchbar {
+    caret-color: var(--text-color);
+    color: var(--text-color);
+    margin: auto;
+    height: 30px;
+    padding-left: 10px;
+    width: 70%;
+    border-bottom: 3px solid;
+  }
+
+
+  #submit {
+    color: var(--text-color);
+  }
+
+  #textinput {
+    color: var(--text-color);
+  }
+
+  .searchbutton {
+    float: left;
+    margin-left: 10px;
+    border: 1px solid;
+    border-radius: 5px;
+  }
+
+
+
+  @media screen and (max-width: 770px) {
+    .searchbar{
+      width: 100%;
+    }
+    .searchbutton{
+      margin-top: 10px;
+      margin-left: 0px;
+      margin-bottom: 10px;
+    }
+  }
