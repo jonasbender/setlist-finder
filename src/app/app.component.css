@@ -4,13 +4,13 @@
 }
 
 .column-left {
-    flex: 25%;
+    flex: 30%;
     height: 100vh;
     background-color: var(--bg2);
 }
 
 .column-right {
-    flex: 75%;
+    flex: 70%;
     height: 100vh;
-    background-color: var(--mid);
+    background-color: var(--bg1);
 }
