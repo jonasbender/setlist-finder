@@ -1,15 +1,16 @@
 .row {
     display: flex;
+    width: 100%;
 }
 
 .column-left {
-    flex: 30%;
+    flex: 25%;
     height: 100vh;
     background-color: var(--bg2);
 }
 
 .column-right {
-    flex: 70%;
+    flex: 75%;
     height: 100vh;
     background-color: var(--mid);
 }
