@@ -10,6 +10,7 @@ import { SearchService } from '../service/search.service';
 export class SearchPageComponent  {
   
   public artist! : string;
+  public searchResults : any;
 
 
   constructor(
@@ -17,11 +18,13 @@ export class SearchPageComponent  {
 
   )
   { }
-
+  
+  
   Submit() {
     this.searchService.getResults(this.artist).subscribe(
       data => {
         console.log(data);
+        this.searchResults = data;
       }
     )
   }
