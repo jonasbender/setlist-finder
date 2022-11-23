@@ -14,3 +14,12 @@
       </form>  
     </div>
 </section>
+
+<div class="search-results">
+  <div class="artistsHeader">ARTISTS</div>
+  <div *ngFor="let result of searchResults">
+    <div class="artistname">{{result.name}}</div>
+    <div class="artistpic"><img src={{result.images[0].url}}></div>
+  </div>
+
+</div>

@@ -11,13 +11,9 @@ export class SearchService {
   constructor(private http: HttpClient) { }
 
   getResults(artist: string) {
-    
-    let headers = new HttpHeaders()
-    .set('Authorization:', this.apiKey)
 
     return this.http.get(
-      "https://api.spotify.com/v1/search?q="+ artist +"type=artist",
-      {headers: headers}
+      "http://localhost:8080/api/search/"+ artist
     )
   }
 }
