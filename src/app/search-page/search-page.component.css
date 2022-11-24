@@ -59,8 +59,49 @@
     border-radius: 5px;
   }
 
-  img {
+  .search-results {
+    width: 70%;
+    margin: auto;
+    background-color: var(--bg1);
+  }
+
+  .image-cropper {
     width: 50px;
+    height: 50px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+  }
+
+  img {
+    display: inline;
+    height: 50px;
+    width: auto;
+  }
+
+  .row {
+    display: flex;
+    width: 100%;
+    padding: 10px;
+  }
+
+  .artistsHeader {
+    font-family: ibmplex-bold;
+    padding: 10px;
+    font-size: 1.5rem;
+  }
+
+  .column-right {
+    flex: 80%;
+    margin-top: auto;
+    margin-bottom: auto;
+    padding-left: 20px;
+    font-family: ibmplex-regular;
+  }
+
+  .column-left {
+    flex: 20%;
+    width: 20%;
   }
 
 
