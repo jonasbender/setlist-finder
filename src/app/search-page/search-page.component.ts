@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable, Subject, Subscription } from 'rxjs';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { debounceTime, distinctUntilChanged, filter, fromEvent, Observable, Subject, Subscription, tap } from 'rxjs';
 import { SearchService } from '../service/search.service';
 
 @Component({
@@ -10,8 +10,11 @@ import { SearchService } from '../service/search.service';
 export class SearchPageComponent  {
   
   public artist! : string;
-  public searchResults : any;
+  public searchResults : any
+  public subscription!: Subscription;
 
+  @ViewChild('input', { static: true })
+  input!: ElementRef;
 
   constructor(
     private searchService : SearchService,
@@ -21,12 +24,18 @@ export class SearchPageComponent  {
   
   
   Submit() {
-    this.searchService.getResults(this.artist).subscribe(
+    this.subscription = this.searchService.getResults(this.artist).subscribe(
       data => {
         console.log(data);
         this.searchResults = data;
       }
     )
   }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe()
+  }
+
+  
 
 }

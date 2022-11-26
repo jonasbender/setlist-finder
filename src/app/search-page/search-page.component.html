@@ -1,9 +1,9 @@
-<section class="top-banner sticky-top" id="top-banner" (keyup.enter)=Submit()>
+<section class="top-banner sticky-top" id="top-banner" (keyup)=Submit()>
     <div class="wrapper">
       <form>
         <div class="container" id="searchbar" >
           <div class="searchbar">
-            <input type="text"   name="location" id="textinput" [(ngModel)]="artist" placeholder="Enter Artist Name" autocomplete="off" >
+            <input type="text"   #input name="location" id="textinput" [(ngModel)]="artist" placeholder="Enter Artist Name" autocomplete="off" >
           </div>
           <!--
            <div class="searchbutton">
@@ -15,12 +15,15 @@
     </div>
 </section>
 
-<div class="search-results">
+<div class="search-results" *ngIf="artist">
   <div class="artistsHeader">ARTISTS</div>
   <div *ngFor="let result of searchResults">
     <div class="row" >
       <div class="image-cropper">
-        <div class="column-left"><img src={{result.images[2].url}}></div>
+        <div class="column-left" *ngIf="result.images.length">
+          <img class="artist-image" src={{result.images[2].url}}  />
+        </div>
+        <div class="placeholder" *ngIf="!result.images.lenght"></div>
       </div>
       <div class="column-right">{{result.name}}</div>
     </div>  
