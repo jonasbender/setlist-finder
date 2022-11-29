@@ -24,6 +24,7 @@ export class SearchPageComponent  {
   
   
   Submit() {
+    
     this.subscription = this.searchService.getResults(this.artist).subscribe(
       data => {
         console.log(data);

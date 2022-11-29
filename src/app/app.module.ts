@@ -14,6 +14,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatButtonModule } from '@angular/material';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { ConcertsComponent } from './concerts/concerts.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     LoginComponent,
     TopArtistsComponent,
     SearchPageComponent,
-    SidebarComponent
+    SidebarComponent,
+    ConcertsComponent
   ],
   imports: [
     BrowserModule,
