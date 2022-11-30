@@ -1,11 +1,15 @@
-#searchbar::after{
+
+
+
+
+
+/*#searchbar::after{
     content: "";
     display: table;
     clear: both;
   }
 
-/* SECTION #1
-  –––––––––––––––––––––––––––––––––––––––––––––––––– */
+
   #top-banner {
     
     margin-top: 50px;
@@ -123,3 +127,5 @@
       margin-bottom: 10px;
     }
   }
+
+  */

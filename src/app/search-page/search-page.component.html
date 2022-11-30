@@ -1,3 +1,36 @@
+<div class="wrapper"> 
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Search Artist" [(ngModel)]="selectedArtist" [matAutocomplete]="auto"
+      [formControl]="searchArtistsCtrl" placeholder="Enter Name of Artist">
+    <button *ngIf="selectedArtist" matSuffix mat-icom-button aria-label="Clear" (click)="clearSelection()">
+      <mat-icon>close</mat-icon>
+    </button>
+    <mat-autocomplete [panelWidth]="400" #auto="matAutocomplete" (optionSelected)="onSelected()" [displayWith]="displayWith">
+      <mat-option *ngIf="isLoading" class="is-loading">Loading...</mat-option>
+      <ng-container *ngIf="!isLoading">
+        <mat-option *ngFor="let artist of filteredArtists" [value]="artist">
+          <span>{{artist.name}}</span>
+        </mat-option>
+      </ng-container>
+    </mat-autocomplete>
+  </mat-form-field>
+
+  <br>
+
+  <!--<ng-container *ngIf="errorMsg; else elseTemplate">
+    {{errorMsg}}
+  </ng-container>
+  <ng-template #elseTemplate>
+    <div class="artist-details" *ngIf="selectedArtist?.name">
+      <div>
+
+      </div>
+    </div>
+  </ng-template>
+  -->
+</div>
+
+<!--
 <section class="top-banner sticky-top" id="top-banner" (keyup)=Submit()>
     <div class="wrapper">
       <form>
@@ -5,11 +38,11 @@
           <div class="searchbar">
             <input type="text"   #input name="location" id="textinput" [(ngModel)]="artist" placeholder="Enter Artist Name" autocomplete="off" >
           </div>
-          <!--
+          
            <div class="searchbutton">
             <button (click)=Submit()  class="btn " id="submit">SUBMIT</button>
           </div> 
-        -->
+        
         </div>  
       </form>  
     </div>
@@ -29,4 +62,4 @@
     </div>  
     </div>
 
-</div>
+</div> -->
