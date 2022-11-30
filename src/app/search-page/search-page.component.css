@@ -3,7 +3,7 @@
 
 
 
-/*#searchbar::after{
+#searchbar::after{
     content: "";
     display: table;
     clear: both;
@@ -128,4 +128,4 @@
     }
   }
 
-  */
+  

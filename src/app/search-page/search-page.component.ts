@@ -71,12 +71,13 @@ export class SearchPageComponent  {
         )
       )
       .subscribe((data: any) => {
-        if (data['Search'] == undefined) {
+        if (data == undefined) {
           this.errorMsg = data['Error'];
           this.filteredArtists = [];
+          console.log("error in Datasearch");
         } else {
           this.errorMsg = "";
-          this.filteredArtists = data ['Search'];
+          this.filteredArtists = data ;
         }
         console.log("filtered Artists" + this.filteredArtists);
       });

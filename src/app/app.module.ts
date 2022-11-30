@@ -16,6 +16,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { ConcertsComponent } from './concerts/concerts.component';
 import {MatCommonModule} from '@angular/material/core';
+import { MatSlideToggle, MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import {MatCommonModule} from '@angular/material/core';
     MatIconModule,
     MatButtonModule,
     MatAutocompleteModule,
+    MatSlideToggleModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
