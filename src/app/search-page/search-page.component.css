@@ -15,8 +15,13 @@
     margin-top: 50px;
   }
 
+  .example-full-width {
+    width: 100%;
+  }
+
   .wrapper {
-    background-color: var(--bgd-color);
+    width: 70%;
+    margin: auto;
   }
   
   

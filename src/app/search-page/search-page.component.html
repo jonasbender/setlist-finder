@@ -3,7 +3,7 @@
 <div class="wrapper"> 
   <mat-form-field class="example-full-width">
     <input matInput placeholder="Search Artist" [(ngModel)]="selectedArtist" [matAutocomplete]="auto"
-      [formControl]="searchArtistsCtrl" placeholder="Enter Name of Artist">
+      [formControl]="searchArtistsCtrl" placeholder="Artist Name">
     <button *ngIf="selectedArtist" matSuffix mat-icon-button aria-label="Clear" (click)="clearSelection()">
       <mat-icon>close</mat-icon>
     </button>
