@@ -28,6 +28,7 @@ export class SearchPageComponent  {
 
   @ViewChild('input', { static: true })
   input!: ElementRef;
+  static selectedArtist: any;
 
   constructor(
     private searchService : SearchService,

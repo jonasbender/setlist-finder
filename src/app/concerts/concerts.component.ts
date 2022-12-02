@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { SearchPageComponent } from '../search-page/search-page.component';
+import { ConcertService } from '../service/concert.service';
 
 @Component({
   selector: 'app-concerts',
@@ -6,10 +8,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./concerts.component.css']
 })
 export class ConcertsComponent implements OnInit {
+  
+  selectedArtist: any = "";
 
-  constructor() { }
+  constructor(
+    private searchPageComponent: SearchPageComponent,
+    private concertService: ConcertService
+  ) { }
 
   ngOnInit(): void {
+    this.selectedArtist = this.searchPageComponent.selectedArtist;
   }
 
 }

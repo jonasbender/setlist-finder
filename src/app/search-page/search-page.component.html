@@ -7,13 +7,14 @@
     <button *ngIf="selectedArtist" matSuffix mat-icon-button aria-label="Clear" (click)="clearSelection()">
       <mat-icon>close</mat-icon>
     </button>
-    <mat-autocomplete  class="autocomplete-results" #auto="matAutocomplete" (optionSelected)="onSelected()" [displayWith]="displayWith">
+    <mat-autocomplete  class="single-autocomplete" #auto="matAutocomplete" (optionSelected)="onSelected()" [displayWith]="displayWith">
       <mat-option *ngIf="isLoading" class="is-loading">Loading...</mat-option>
       <ng-container *ngIf="!isLoading">
         <mat-option *ngFor="let artist of filteredArtists" [value]="artist">
           <span class="row">
             <div class="image-cropper">
               <div class="column-left" *ngIf="artist.images.length">
+                <div class="image-wrapper"></div>
                 <img class="artist-image" src={{artist.images[2].url}}  />
               </div>
               <div class="placeholder" *ngIf="!artist.images.lenght"></div>
@@ -27,17 +28,18 @@
 
   <br>
 
-  <!--<ng-container *ngIf="errorMsg; else elseTemplate">
+  <ng-container *ngIf="errorMsg; else elseTemplate">
     {{errorMsg}}
   </ng-container>
   <ng-template #elseTemplate>
     <div class="artist-details" *ngIf="selectedArtist?.name">
       <div>
-
+        <h3>{{selectedArtist?.name}}</h3>
+        <app-concerts></app-concerts>
       </div>
     </div>
   </ng-template>
-  -->
+  
 </div>
 
 <!--
