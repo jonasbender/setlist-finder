@@ -14,3 +14,7 @@
     height: 100vh;
     background-color: var(--bg1);
 }
+
+::ng-deep .mat-autocomplete-panel {
+    max-height: 400px;
+  }

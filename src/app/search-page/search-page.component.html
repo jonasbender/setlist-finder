@@ -7,7 +7,7 @@
     <button *ngIf="selectedArtist" matSuffix mat-icon-button aria-label="Clear" (click)="clearSelection()">
       <mat-icon>close</mat-icon>
     </button>
-    <mat-autocomplete  class="automplete-results" #auto="matAutocomplete" (optionSelected)="onSelected()" [displayWith]="displayWith">
+    <mat-autocomplete  class="autocomplete-results" #auto="matAutocomplete" (optionSelected)="onSelected()" [displayWith]="displayWith">
       <mat-option *ngIf="isLoading" class="is-loading">Loading...</mat-option>
       <ng-container *ngIf="!isLoading">
         <mat-option *ngFor="let artist of filteredArtists" [value]="artist">
