@@ -37,8 +37,9 @@ export class SearchPageComponent  {
   { }
 
   onSelected() {
-    console.log(this.selectedArtist);
     this.selectedArtist = this.selectedArtist;
+    console.log("selectedArtist: "+this.selectedArtist.name);
+    return this.selectedArtist;
   }
 
   displayWith(value: any) {

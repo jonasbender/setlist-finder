@@ -10,6 +10,7 @@ import { ConcertService } from '../service/concert.service';
 export class ConcertsComponent implements OnInit {
   
   selectedArtist: any = "";
+  concerts: any;
 
   constructor(
     private searchPageComponent: SearchPageComponent,
@@ -17,8 +18,16 @@ export class ConcertsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.selectedArtist = this.searchPageComponent.SelectedArtist();
+    this.selectedArtist = this.searchPageComponent.onSelected();
+    this.selectedArtist = this.selectedArtist.name;
     console.log(this.selectedArtist);
+
+    this.concertService.getConcertResults(this.selectedArtist).subscribe(
+      data => {
+        this.concerts = data;
+        console.log(this.concerts);
+      }
+    )
   }
 
 }
