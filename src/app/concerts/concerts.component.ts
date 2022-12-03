@@ -17,7 +17,8 @@ export class ConcertsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.selectedArtist = this.searchPageComponent.selectedArtist;
+    this.selectedArtist = this.searchPageComponent.SelectedArtist();
+    console.log(this.selectedArtist);
   }
 
 }

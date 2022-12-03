@@ -83,6 +83,10 @@ export class SearchPageComponent  {
         console.log("filtered Artists" + this.filteredArtists);
       });
   }
+
+  get SelectedArtist() {
+    return this.selectedArtist;
+  }
   
   
   /*
