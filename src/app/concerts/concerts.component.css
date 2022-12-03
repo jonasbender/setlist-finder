@@ -1,0 +1,16 @@
+
+
+.singleSetlistWrapper {
+    display: flex;
+    flex-direction: row;
+}
+
+.dateWrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.textWrapper {
+    display: flex;
+    flex-direction: column;
+}

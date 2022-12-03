@@ -1,1 +1,24 @@
 {{selectedArtist}}
+
+
+
+<div class="setlists">
+    <div class="singleSetlistWrapper" *ngFor="let concert of concerts.setlist">
+        <div class="dateWrapper">
+            <span class="month">{{splitDate(concert.eventDate) | date: "MMM"}}</span>
+            <span class="day">{{splitDate(concert.eventDate) | date: "dd"}}</span>
+            <span class="year">{{splitDate(concert.eventDate) | date: "yyyy"}}</span>
+        </div>
+        <div class="textWrapper">
+            <span class="artistName">{{concert.artist.name}}</span>
+            <span class="location">
+                {{concert.venue.name}}
+                {{concert.venue.city.name}}
+                {{concert.venue.city.country.code}}</span>
+            <span class="numberOfSongs">
+
+            </span>
+        </div>
+    </div>
+
+</div>
