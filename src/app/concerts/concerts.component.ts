@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { SearchPageComponent } from '../search-page/search-page.component';
 import { ConcertService } from '../service/concert.service';
@@ -11,6 +12,14 @@ export class ConcertsComponent implements OnInit {
   
   selectedArtist: any = "";
   concerts: any;
+
+  date: any;
+  month: any;
+  day: any;
+  year: any;
+
+
+  numberOfSongs: any;
 
   constructor(
     private searchPageComponent: SearchPageComponent,
@@ -29,5 +38,14 @@ export class ConcertsComponent implements OnInit {
       }
     )
   }
+
+  splitDate(dateString : string) {
+    var month = dateString.split("-")[1];
+    var day = dateString.split("-")[0];
+    var year = dateString.split("-")[2];
+    const date = new Date(+year, +month -1, +day);
+    return date;
+  }
+
 
 }
