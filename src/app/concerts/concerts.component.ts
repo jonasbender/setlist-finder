@@ -47,5 +47,14 @@ export class ConcertsComponent implements OnInit {
     return date;
   }
 
+  calculateNumberOfSongs(sets : any) {
+    var numberOfSongs = 0;
+    for (let i = 0; i<sets.set.length; i++) {
+      var songArray = sets.set[i].song;
+      numberOfSongs += songArray.length;
+    }
+    return numberOfSongs;
+  }
+
 
 }
