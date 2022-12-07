@@ -20,9 +20,17 @@
   }
 
   .wrapper {
-    width: 70%;
+    width: 100%;
     margin: auto;
     height: 500px;
+  }
+
+  
+
+  .example-full-width {
+    width: 80%;
+    position: relative;
+    left: 10%;
   }
   
   

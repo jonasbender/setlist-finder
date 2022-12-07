@@ -52,6 +52,7 @@ export class ConcertsComponent implements OnInit {
     for (let i = 0; i<sets.set.length; i++) {
       var songArray = sets.set[i].song;
       numberOfSongs += songArray.length;
+      
     }
     return numberOfSongs;
   }

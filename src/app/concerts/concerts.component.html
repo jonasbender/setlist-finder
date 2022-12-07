@@ -1,6 +1,6 @@
-{{selectedArtist}}
-
-
+<div class="artsistHeader">
+    <h3>{{selectedArtist}}</h3>
+</div>
 
 <div class="setlists">
     <div class="singleSetlistWrapper" *ngFor="let concert of concerts.setlist">
@@ -17,6 +17,7 @@
                 {{concert.venue.city.country.code}}</span>
             <span class="numberOfSongs">
                 {{calculateNumberOfSongs(concert.sets)}}
+                <span class="songDescriptor">songs</span>
             </span>
         </div>
     </div>

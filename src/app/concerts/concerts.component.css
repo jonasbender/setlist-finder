@@ -1,16 +1,86 @@
 
+h3 {
+    text-align: left;
+    font-family: ibmplex-bold;
+    text-transform: uppercase;
+    padding-left: 15%;
+}
+
+.artistWrapper {
+    padding-left: 10%;
+}
 
 .singleSetlistWrapper {
     display: flex;
     flex-direction: row;
+    width: 80%;
+    height: 80px;
+    padding-left: 10%;
+    padding-right: 10%;
 }
 
 .dateWrapper {
     display: flex;
     flex-direction: column;
+    height: 60px;
+    position: relative;
+    top: 50%;
+    transform: translate(0, -50%);
 }
 
 .textWrapper {
     display: flex;
+    padding-left: 40px;
     flex-direction: column;
+    height: 60px;
+    position: relative;
+    top: 50%;
+    transform: translate(0, -50%);
+}
+
+.month {
+    text-align: center;
+    font-family: ibmplex-semibold;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+}
+
+.day {
+    text-align: center;
+    font-family: ibmplex-bold;
+    font-size: 1.3rem;
+}
+
+.year {
+    text-align: center;
+    font-family: ibmplex-regular;
+    font-size: 0.8rem;
+}
+
+.artistName {
+    font-family: ibmplex-bold;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    height: 20px;
+    line-height: 20px;
+}
+
+.location {
+    font-family: ibmplex-regular;
+    font-size: 0.8rem;
+    height: 20px;
+    line-height: 20px;
+}
+
+.numberOfSongs {
+    font-family: ibmplex-semibold;
+    font-size: 0.8rem;
+    height: 20px;
+    line-height: 20px;
+}
+
+.songDescriptor {
+    font-family: ibmplex-regular;
+    font-size: 0.7rem;
+    line-height: 20px;
 }
