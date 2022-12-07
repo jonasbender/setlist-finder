@@ -7,6 +7,7 @@
     flex: 30%;
     height: 100vh;
     background-color: var(--bg2);
+
 }
 
 .column-right {
@@ -18,3 +19,9 @@
 ::ng-deep .mat-autocomplete-panel {
     max-height: 400px;
   }
+
+app-sidebar {
+    padding-top: 0;
+    margin-top: 0;
+    height: 90vh;
+}

@@ -6,6 +6,10 @@ body {
 h1 {
     text-align: center;
     font-family: ibmplex-bold;
-    padding-top: 20px;
+    height: 10%;
+}
+
+app-search-page {
+    height: 90%;
 }
 

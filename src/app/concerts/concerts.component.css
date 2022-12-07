@@ -6,6 +6,18 @@ h3 {
     padding-left: 15%;
 }
 
+.setlists {
+    margin-top: 3.4%;
+    display: block;
+    overflow-y: scroll;
+    height: 100%;
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+}
+.setlists::-webkit-scrollbar {
+    display: none;
+}
+
 .artistWrapper {
     padding-left: 10%;
 }

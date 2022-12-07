@@ -1,7 +1,9 @@
 
 
 
-
+app-concerts {
+  height: 300px;
+}
 
 #searchbar::after{
     content: "";
@@ -22,7 +24,7 @@
   .wrapper {
     width: 100%;
     margin: auto;
-    height: 500px;
+    height: 90%;
   }
 
   
@@ -151,6 +153,10 @@
     width: 40px;
     height: 40px;
     border-radius: 50%;
+  }
+
+  .artist-details {
+    height: 90%;
   }
 
 
