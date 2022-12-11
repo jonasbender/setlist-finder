@@ -1,5 +1,6 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { SearchPageComponent } from '../search-page/search-page.component';
 import { ConcertService } from '../service/concert.service';
 
@@ -23,7 +24,8 @@ export class ConcertsComponent implements OnInit {
 
   constructor(
     private searchPageComponent: SearchPageComponent,
-    private concertService: ConcertService
+    private concertService: ConcertService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -37,6 +39,11 @@ export class ConcertsComponent implements OnInit {
         console.log(this.concerts);
       }
     )
+  }
+
+  selectConcert(id: any) {
+    this.router.navigate(["concerts"], {queryParams: {id}})
+    console.log(id);
   }
 
   splitDate(dateString : string) {

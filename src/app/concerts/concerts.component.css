@@ -103,21 +103,21 @@ h3 {
     background-color: var(--mid);
 }
 
-.singleSetlistWrapper {
+/* .singleSetlistWrapper {
     animation-name: slideIn;
     animation-duration: 400ms;
     animation-timing-function: ease;
-    animation-delay: 100ms;
+    animation-delay: 0ms;
     animation-iteration-count: 1;
     animation-direction: normal;
     animation-fill-mode: forwards;
     animation-play-state: running;
     transform: translateY(100%);
     opacity: 0;
-}
+} 
 
 
 @keyframes slideIn {
     0%    {opacity: 0; transform: translateY(100%);}
     100%    {opacity: 1; transform: translateY(0px);} 
-}
+} */

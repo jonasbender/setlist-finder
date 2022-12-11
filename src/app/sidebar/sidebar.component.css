@@ -3,10 +3,14 @@ body {
     background-color: var(--bg2);
 }
 
+.header {
+    height: 10%;
+}
+
 h1 {
     text-align: center;
     font-family: ibmplex-bold;
-    height: 10%;
+    padding-top: 50px;
 }
 
 app-search-page {
