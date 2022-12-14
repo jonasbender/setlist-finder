@@ -42,7 +42,7 @@ export class ConcertsComponent implements OnInit {
   }
 
   selectConcert(id: any) {
-    this.router.navigate(["concerts"], {queryParams: {id}})
+    this.router.navigate(["setlist"], {queryParams: {id}})
     console.log(id);
   }
 

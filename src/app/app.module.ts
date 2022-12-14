@@ -17,6 +17,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { ConcertsComponent } from './concerts/concerts.component';
 import {MatCommonModule} from '@angular/material/core';
 import { MatSlideToggle, MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { SetlistComponent } from './setlist/setlist.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { MatSlideToggle, MatSlideToggleModule } from '@angular/material/slide-to
     TopArtistsComponent,
     SearchPageComponent,
     SidebarComponent,
-    ConcertsComponent
+    ConcertsComponent,
+    SetlistComponent
   ],
   imports: [
     BrowserModule,
