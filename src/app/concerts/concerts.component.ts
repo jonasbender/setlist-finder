@@ -12,6 +12,7 @@ import { ConcertService } from '../service/concert.service';
 export class ConcertsComponent implements OnInit {
   
   selectedArtist: any = "";
+  selectedConcertId!: string;
   concerts: any;
 
   date: any;
@@ -42,6 +43,7 @@ export class ConcertsComponent implements OnInit {
   }
 
   selectConcert(id: any) {
+    this.selectedConcertId = id; 
     this.router.navigate(["setlist"], {queryParams: {id}})
     console.log(id);
   }

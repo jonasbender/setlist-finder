@@ -3,7 +3,10 @@
 </div>
 
 <div class="setlists">
-    <div class="singleSetlistWrapper" *ngFor="let concert of concerts.setlist" (click)=selectConcert(concert.id)>
+    <div class="singleSetlistWrapper" 
+            *ngFor="let concert of concerts.setlist" 
+            [ngClass]="{'selected': concert.id === selectedConcertId}"
+            (click)=selectConcert(concert.id)>
         <div class="dateWrapper">
             <span class="month">{{splitDate(concert.eventDate) | date: "MMM"}}</span>
             <span class="day">{{splitDate(concert.eventDate) | date: "dd"}}</span>

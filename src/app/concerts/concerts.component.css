@@ -103,6 +103,15 @@ h3 {
     background-color: var(--mid);
 }
 
+.singleSetlistWrapper.selected {
+    background-color: var(--high);
+    
+}
+
+.singleSetlistWrapper.selected span {
+    color: var(--bg1);
+}
+
 /* .singleSetlistWrapper {
     animation-name: slideIn;
     animation-duration: 400ms;
