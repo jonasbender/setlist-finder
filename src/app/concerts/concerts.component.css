@@ -103,6 +103,10 @@ h3 {
     background-color: var(--mid);
 }
 
+.singleSetlistWrapper {
+    cursor: pointer;
+}
+
 .singleSetlistWrapper.selected {
     background-color: var(--high);
     
