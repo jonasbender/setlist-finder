@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-setlist',
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SetlistComponent implements OnInit {
 
-  constructor() { }
+  id!: string;
+
+  constructor(
+    private route: ActivatedRoute,
+  ) { }
 
   ngOnInit(): void {
+
+    this.route.queryParams
+      .subscribe(params => {
+        console.log(params); 
+        this.id = params['id'];
+      }
+    );
+
+
   }
 
 }
