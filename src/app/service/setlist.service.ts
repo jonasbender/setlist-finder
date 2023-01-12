@@ -12,6 +12,9 @@ export class SetlistService {
   ) { }
 
   getSetlist(setlistId: string){
-    return this.http.get('http://localhost:8080/api/tracks/setlistId')
+    return this.http.get(
+      'http://localhost:8080/api/tracks/' + setlistId)
   }
+
+  
 }
