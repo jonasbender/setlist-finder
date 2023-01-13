@@ -10,11 +10,16 @@
     <div class="bodyWrapper">
         <div class="leftColumn">
             <div class="songWrapper" *ngFor="let song of setlist.tracks" >
-                <div class="TrackCoverImage">    
-                    <img class="artist-image" src={{song.trackImageURL}}  />   
+                <div class="imageWrapper">
+                    <div class="TrackCoverImage">    
+                        <img class="artist-image" src={{song.trackImageURL}}  />   
+                    </div>
                 </div>
-                <div class="trackName">{{song.trackName}}</div>
-                <div class="albumName">{{song.album}}</div>
+                <div class="textWrapper">
+                    <div class="trackName">{{song.trackName}}</div>
+                    <div class="albumName">{{song.album}}</div>
+                </div>
+                
             </div>
         </div>
         <div class="rightColumn">

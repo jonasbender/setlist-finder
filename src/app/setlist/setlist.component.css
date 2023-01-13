@@ -2,7 +2,22 @@
 
 .bodyWrapper {
     display: flex;
+    flex-direction: row;
+}
+
+.songWrapper {
+    display: flex;
+    flex-direction: row;
+}
+
+.imageWrapper {
+    display: flex;
     flex-direction: column;
+}
+
+.textWrapper {
+    display: flex;
+    flex-direction:  column;
 }
 
 
