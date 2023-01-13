@@ -4,26 +4,29 @@
     <div class="titleWrapper">
         <span class="titleHeader">PLAYLIST TITLE</span>
         <div class="playlistTitle">{{playlistTitle}}</div>
-        <div>{{setlist.tracks[0].trackName}}</div>
     </div>
 
     <div class="bodyWrapper">
         <div class="leftColumn">
+            <div class="songHeader">TRACKS</div>
             <div class="songWrapper" *ngFor="let song of setlist.tracks" >
+                
                 <div class="imageWrapper">
                     <div class="TrackCoverImage">    
                         <img class="artist-image" src={{song.trackImageURL}}  />   
                     </div>
                 </div>
                 <div class="textWrapper">
-                    <div class="trackName">{{song.trackName}}</div>
+                    <span class="trackName">{{song.trackName}}</span>
+                    <span class="coverArtist" *ngIf="song.isCover == true"> by {{song.artist}}</span>
                     <div class="albumName">{{song.album}}</div>
                 </div>
                 
             </div>
         </div>
         <div class="rightColumn">
-
+            <div class="durationHeader">DURATION</div>
+            <div class="duration">{{setlist.totalDuration}} m</div>
         </div>
     </div>
 
