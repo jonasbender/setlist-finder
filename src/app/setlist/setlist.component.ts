@@ -13,6 +13,7 @@ export class SetlistComponent implements OnInit {
   setlist: any;
   errorMessage: any;
   invalidId!: false;
+  playlistTitle!: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -31,11 +32,22 @@ export class SetlistComponent implements OnInit {
         data => {
           this.setlist = data;
           console.log("setlist: "+this.setlist);
+          this.playlistTitle = this.PlaylistTitleConstructor();
+          console.log(this.playlistTitle);
         }
       );
     
+      this.playlistTitle = this.PlaylistTitleConstructor();
+      console.log(this.playlistTitle);
 
 
+  }
+
+  PlaylistTitleConstructor() {
+    
+    this.playlistTitle = this.setlist.artistName +  " at " + this.setlist.eventVenue;
+
+    return this.playlistTitle;
   }
 
 }

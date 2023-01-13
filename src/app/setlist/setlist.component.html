@@ -1,4 +1,32 @@
-<p>setlist works!</p>
+
+<div class="wrapper">
+
+    <div class="titleWrapper">
+        <span class="titleHeader">PLAYLIST TITLE</span>
+        <div class="playlistTitle">{{playlistTitle}}</div>
+        <div>{{setlist.tracks[0].trackName}}</div>
+    </div>
+
+    <div class="bodyWrapper">
+        <div class="leftColumn">
+            <div class="songWrapper" *ngFor="let song of setlist.tracks" >
+                <div class="TrackCoverImage">    
+                    <img class="artist-image" src={{song.trackImageURL}}  />   
+                </div>
+                <div class="trackName">{{song.trackName}}</div>
+                <div class="albumName">{{song.album}}</div>
+            </div>
+        </div>
+        <div class="rightColumn">
+
+        </div>
+    </div>
+
+    
 
 
-<p>{{setlist.artistName}}</p>
+
+</div>
+
+
+

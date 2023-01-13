@@ -1,0 +1,23 @@
+
+
+.bodyWrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.image-cropper {
+    width: 40px;
+    height: 40px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+  }
+
+ 
+
+  img {
+    height: auto;
+    width: 40px;
+    margin: auto;
+  }
