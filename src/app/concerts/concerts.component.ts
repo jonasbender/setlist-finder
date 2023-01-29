@@ -28,7 +28,11 @@ export class ConcertsComponent implements OnInit {
     private concertService: ConcertService,
     private router: Router,
     private route: ActivatedRoute
-  ) { }
+  ) { 
+    this.route.paramMap.subscribe(params => {
+      this.selectConcert();
+    })
+  }
 
   ngOnInit(): void {
     this.selectedArtist = this.searchPageComponent.onSelected();
