@@ -24,23 +24,28 @@ export class SetlistComponent implements OnInit {
 
     this.route.queryParams
       .subscribe(params => {
-        console.log(params);
         this.id = params['id'];
+        console.log(params);
+        this.reload();
       })
 
-      this.setlistService.getSetlist(this.id).subscribe(
-        data => {
-          this.setlist = data;
-          console.log("setlist: "+this.setlist);
-          this.playlistTitle = this.PlaylistTitleConstructor();
-          console.log(this.playlistTitle);
-        }
-      );
+      
     
       this.playlistTitle = this.PlaylistTitleConstructor();
       console.log(this.playlistTitle);
 
 
+  }
+
+  reload() {
+    this.setlistService.getSetlist(this.id).subscribe(
+      data => {
+        this.setlist = data;
+        console.log("setlist: "+this.setlist);
+        this.playlistTitle = this.PlaylistTitleConstructor();
+        console.log(this.playlistTitle);
+      }
+    );
   }
 
   PlaylistTitleConstructor() {

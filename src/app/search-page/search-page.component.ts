@@ -5,6 +5,7 @@ import {MatCommonModule} from '@angular/material/core';
 import { SearchService } from '../service/search.service';
 import { FormControl } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-search-page',
@@ -32,9 +33,9 @@ export class SearchPageComponent  {
 
   constructor(
     private searchService : SearchService,
-    private http : HttpClient
+    private http : HttpClient,
   )
-  { }
+  {}
 
   onSelected() {
     this.selectedArtist = this.selectedArtist;
