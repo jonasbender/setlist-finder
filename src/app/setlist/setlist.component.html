@@ -17,8 +17,10 @@
                     </div>
                 </div>
                 <div class="textWrapper">
-                    <span class="trackName">{{song.trackName}}</span>
-                    <span class="coverArtist" *ngIf="song.isCover == true"> by {{song.artist}}</span>
+                    <div class="nameWrapper">
+                        <span class="trackName">{{song.trackName}}</span>
+                        <span class="coverArtist" *ngIf="song.isCover == true">  &nbsp;by {{song.artist}}</span>   
+                    </div>
                     <div class="albumName">{{song.album}}</div>
                 </div>
                 
@@ -27,7 +29,7 @@
         <div class="rightColumn">
             <div class="durationHeader">DURATION</div>
             <div class="duration">{{setlist.totalDuration}} m</div>
-            <div >COVER</div>
+            <div class="cover">COVER</div>
             <div class="PlaylistImageWrapper">    
                 <img class="playlistImage" src="https://pub-cdn.apitemplate.io/2023/01/82531486-4ca1-4967-bf45-905374ff6969.jpeg"  />   
             </div>
