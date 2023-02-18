@@ -121,3 +121,38 @@
     margin: auto;
   }
 
+
+:host ::ng-deep .mat-slide-toggle-bar {
+    height: 27px;
+    width: 46px;
+    background-color: var(--high) ;
+    border-radius: 36px;
+}
+
+:host ::ng-deep .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {
+    background-color: var(--high) ;
+    height: 27px;
+    width: 46px;
+    border-radius: 36;
+}
+
+:host ::ng-deep  .mat-slide-toggle-thumb {
+    background-color: var(--bg1) ;
+    top: 6px;
+    right: -4px;
+    position: relative;
+}
+
+:host ::ng-deep  .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
+    background-color: var(--bg1) ;
+    top: 6px;
+    right: -6px;
+    position: relative;
+}
+
+:host ::ng-deep .mat-slide-toggle .mat-slide-toggle-ripple {
+    height: 0px;
+    width: 0px;
+}
+
+
