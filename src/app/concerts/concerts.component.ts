@@ -33,7 +33,8 @@ export class ConcertsComponent implements OnInit {
   ngOnInit(): void {
     this.selectedArtist = this.searchPageComponent.onSelected();
     this.selectedArtist = this.selectedArtist.name;
-    console.log(this.selectedArtist);
+    console.log("test"+this.selectedArtist);
+    this.router.navigate([], {relativeTo: this.route, queryParams: {artist: this.selectedArtist}, skipLocationChange: false} );
 
     this.concertService.getConcertResults(this.selectedArtist).subscribe(
       data => {
@@ -46,7 +47,9 @@ export class ConcertsComponent implements OnInit {
   selectConcert(id: any) {
     this.selectedConcertId = id; 
     this.reload();
-    this.router.navigate(["setlist"], {queryParams: {id: id}, skipLocationChange: false} );
+    this.router.navigate(["setlist"], {queryParams: {id: id},
+    queryParamsHandling: 'merge',
+     skipLocationChange: false} );
     
     console.log(id);
   }
