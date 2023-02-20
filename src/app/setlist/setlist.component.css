@@ -47,7 +47,7 @@
 }
 
 .playlistImage {
-    width: 600px;
+    width: 100%;
 }
 
 .textWrapper {
@@ -121,6 +121,32 @@
     margin: auto;
   }
 
+.publicToggle {
+    width: 100%;
+    display: flex;
+    margin-top: 20px;
+    margin-right: auto;
+    margin-left: auto;
+    justify-content: center;
+}
+
+.slideLabel {
+    margin-left: 15px;
+    margin-right: 15px;
+    padding-top: 2px;
+}
+
+.createButton {
+    margin-top: 40px;
+    line-height: 40px;
+    text-transform: uppercase;
+    color: var(--bg1);
+    text-align: center;
+    width: 100%;
+    height: 40px;
+    background-color: var(--high);
+    border-radius: 5px;
+}
 
 :host ::ng-deep .mat-slide-toggle-bar {
     height: 27px;
