@@ -33,10 +33,14 @@
             <div class="PlaylistImageWrapper">    
                 <img class="playlistImage" src="https://pub-cdn.apitemplate.io/2023/01/82531486-4ca1-4967-bf45-905374ff6969.jpeg"  />   
             </div>
-            <span>Private</span>
-            <div class="publicToggle"></div>
-            <mat-slide-toggle ></mat-slide-toggle>
-            <span>Public</span>
+            <div class="publicToggle">
+                <span class="slideLabel">Private</span>
+                <mat-slide-toggle [(ngModel)]="private"></mat-slide-toggle>
+                <span class="slideLabel">Public</span>
+            </div>
+            <div class="createButton">
+                Login to save playlist
+            </div>
         </div>
     </div>
 

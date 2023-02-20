@@ -14,7 +14,7 @@ export class SetlistComponent implements OnInit {
   errorMessage: any;
   invalidId!: false;
   playlistTitle!: string;
-  private!: true;
+  private!: false;
 
   constructor(
     private route: ActivatedRoute,
