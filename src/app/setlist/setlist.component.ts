@@ -56,4 +56,8 @@ export class SetlistComponent implements OnInit {
     return this.playlistTitle;
   }
 
+  createPlaylist() {
+    
+  }
+
 }
