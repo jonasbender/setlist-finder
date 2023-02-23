@@ -57,7 +57,7 @@ export class SetlistComponent implements OnInit {
   }
 
   createPlaylist() {
-    
+    console.log("playlist successfull")
   }
 
 }
