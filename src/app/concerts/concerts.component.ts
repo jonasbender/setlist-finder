@@ -10,7 +10,7 @@ import { ConcertService } from '../service/concert.service';
 	styleUrls: ['./concerts.component.css'],
 })
 export class ConcertsComponent implements OnInit {
-	selectedArtist: any = '';
+	selectedArtist: any = 'Paramore';
 	selectedConcertId!: string;
 	concerts: any;
 
