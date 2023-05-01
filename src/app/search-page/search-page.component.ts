@@ -16,7 +16,7 @@ import { MatCommonModule } from '@angular/material/core';
 import { SearchService } from '../service/search.service';
 import { FormControl } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 @Component({
 	selector: 'app-search-page',
@@ -36,6 +36,7 @@ export class SearchPageComponent {
 	errorMsg!: string;
 	minLengthTerm = 3;
 	selectedArtist: any = '';
+	artistName: any = '';
 
 	@ViewChild('input', { static: true })
 	input!: ElementRef;
@@ -51,7 +52,7 @@ export class SearchPageComponent {
 
 	onSelected() {
 		this.selectedArtist = this.selectedArtist;
-		console.log('selectedArtist: ' + this.selectedArtist.name);
+		console.log('selectedArtist after reload: ' + this.selectedArtist.name);
 		return this.selectedArtist;
 	}
 
@@ -65,6 +66,15 @@ export class SearchPageComponent {
 	}
 
 	ngOnInit() {
+		// this.route.queryParams.subscribe((params: Params) => {
+		// 	this.artistName = params['artist'];
+		// 	console.log(this.artistName);
+		// 	if (this.artistName && this.artistName.trim()) {
+		// 		this.selectedArtist = this.artistName.trim();
+		// 		this.onSelected();
+		// 	}
+		// });
+
 		this.searchArtistsCtrl.valueChanges
 			.pipe(
 				filter((res) => {
@@ -103,20 +113,4 @@ export class SearchPageComponent {
 	get SelectedArtist() {
 		return this.selectedArtist;
 	}
-
-	/*
-  Submit() {
-    
-    this.subscription = this.searchService.getResults(this.artist).subscribe(
-      data => {
-        console.log(data);
-        this.searchResults = data;
-      }
-    )
-  }
-
-  ngOnDestroy() {
-    this.subscription.unsubscribe()
-  }
-  */
 }
