@@ -2,17 +2,17 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
-  providedIn: 'root'
+	providedIn: 'root',
 })
 export class AuthenticationService {
+	constructor(private http: HttpClient) {}
 
-  constructor(
-    private http : HttpClient
-  ) { }
-
-  getSpotifyUserLogin(){
-    return this.http.get('http://localhost:8080/api/login', {responseType: 'text'})
-  }
-
-
+	getSpotifyUserLogin(lastViewedUrl: string) {
+		return this.http.get(
+			`http://localhost:8080/api/login?lastViewedUrl=${encodeURIComponent(
+				lastViewedUrl
+			)}`,
+			{ responseType: 'text' }
+		);
+	}
 }

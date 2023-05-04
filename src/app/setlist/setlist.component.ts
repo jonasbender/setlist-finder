@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SetlistService } from '../service/setlist.service';
+import { AuthenticationService } from '../service/authentication.service';
 
 @Component({
 	selector: 'app-setlist',
@@ -14,10 +15,12 @@ export class SetlistComponent implements OnInit {
 	invalidId!: false;
 	playlistTitle!: string;
 	private!: false;
+	public response: any;
 
 	constructor(
 		private route: ActivatedRoute,
-		private setlistService: SetlistService
+		private setlistService: SetlistService,
+		private authService: AuthenticationService
 	) {}
 
 	ngOnInit(): void {
@@ -49,5 +52,14 @@ export class SetlistComponent implements OnInit {
 
 	createPlaylist() {
 		console.log('playlist successfull');
+	}
+
+	LoginToSpotify() {
+		const currentUrl = window.location.href;
+		this.authService.getSpotifyUserLogin(currentUrl).subscribe((data) => {
+			this.response = data;
+			console.log('Login response' + this.response);
+			window.location.href = this.response;
+		});
 	}
 }

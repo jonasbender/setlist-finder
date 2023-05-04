@@ -1,54 +1,52 @@
-
 <div class="wrapper">
+	<div class="titleWrapper">
+		<span class="titleHeader">PLAYLIST TITLE</span>
+		<div class="playlistTitle" contenteditable="true">{{
+			playlistTitle
+		}}</div>
+	</div>
 
-    <div class="titleWrapper">
-        <span class="titleHeader">PLAYLIST TITLE</span>
-        <div class="playlistTitle" contenteditable="true">{{playlistTitle}}</div>
-    </div>
-
-    <div class="bodyWrapper">
-        <div class="leftColumn">
-            <div class="songHeader">TRACKS</div>
-            <div class="songWrapper" *ngFor="let song of setlist.tracks" >
-                
-                <div class="imageWrapper">
-                    <div class="TrackCoverImage">    
-                        <img class="artist-image" src={{song.trackImageURL}}  />   
-                    </div>
-                </div>
-                <div class="textWrapper">
-                    <div class="nameWrapper">
-                        <span class="trackName">{{song.trackName}}</span>
-                        <span class="coverArtist" *ngIf="song.isCover == true">  &nbsp;by {{song.artist}}</span>   
-                    </div>
-                    <div class="albumName">{{song.album}}</div>
-                </div>
-                
-            </div>
-        </div>
-        <div class="rightColumn">
-            <div class="durationHeader">DURATION</div>
-            <div class="duration">{{setlist.totalDuration}} m</div>
-            <div class="cover">COVER</div>
-            <div class="PlaylistImageWrapper">    
-                <img class="playlistImage" src="https://pub-cdn.apitemplate.io/2023/01/82531486-4ca1-4967-bf45-905374ff6969.jpeg"  />   
-            </div>
-            <div class="publicToggle">
-                <span class="slideLabel">Private</span>
-                <mat-slide-toggle [(ngModel)]="private"></mat-slide-toggle>
-                <span class="slideLabel">Public</span>
-            </div>
-            <div class="createButton" (click)="createPlaylist()">
-                Login to save playlist
-            </div>
-        </div>
-    </div>
-
-    
-
-
-
+	<div class="bodyWrapper">
+		<div class="leftColumn">
+			<div class="songHeader">TRACKS</div>
+			<div class="songWrapper" *ngFor="let song of setlist.tracks">
+				<div class="imageWrapper">
+					<div class="TrackCoverImage">
+						<img
+							class="artist-image"
+							src="{{ song.trackImageURL }}"
+						/>
+					</div>
+				</div>
+				<div class="textWrapper">
+					<div class="nameWrapper">
+						<span class="trackName">{{ song.trackName }}</span>
+						<span class="coverArtist" *ngIf="song.isCover == true">
+							&nbsp;by {{ song.artist }}</span
+						>
+					</div>
+					<div class="albumName">{{ song.album }}</div>
+				</div>
+			</div>
+		</div>
+		<div class="rightColumn">
+			<div class="durationHeader">DURATION</div>
+			<div class="duration">{{ setlist.totalDuration }} m</div>
+			<div class="cover">COVER</div>
+			<div class="PlaylistImageWrapper">
+				<img
+					class="playlistImage"
+					src="https://pub-cdn.apitemplate.io/2023/01/82531486-4ca1-4967-bf45-905374ff6969.jpeg"
+				/>
+			</div>
+			<div class="publicToggle">
+				<span class="slideLabel">Private</span>
+				<mat-slide-toggle [(ngModel)]="private"></mat-slide-toggle>
+				<span class="slideLabel">Public</span>
+			</div>
+			<div class="createButton" (click)="LoginToSpotify()">
+				Login to save playlist
+			</div>
+		</div>
+	</div>
 </div>
-
-
-
