@@ -30,6 +30,13 @@ export class SetlistComponent implements OnInit {
 			this.reload();
 		});
 
+		this.route.queryParams.subscribe((params) => {
+			const accessToken = params['access_token'];
+			const refreshToken = params['refresh_token'];
+			localStorage.setItem('access_token', accessToken);
+			localStorage.setItem('refresh_token', refreshToken);
+		});
+
 		this.playlistTitle = this.PlaylistTitleConstructor();
 		console.log(this.playlistTitle);
 	}
