@@ -34,7 +34,6 @@ export class ConcertsComponent implements OnInit {
 		console.log('selected Artist: ' + this.selectedArtist);
 		this.router.navigate([], {
 			relativeTo: this.route,
-			queryParams: { artist: this.selectedArtist },
 			skipLocationChange: false,
 		});
 
