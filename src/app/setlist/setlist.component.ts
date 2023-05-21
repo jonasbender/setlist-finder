@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { SetlistService } from '../service/setlist.service';
 import { AuthenticationService } from '../service/authentication.service';
+import axios from 'axios';
 
 @Component({
 	selector: 'app-setlist',
@@ -20,7 +21,8 @@ export class SetlistComponent implements OnInit {
 	constructor(
 		private route: ActivatedRoute,
 		private setlistService: SetlistService,
-		private authService: AuthenticationService
+		private authService: AuthenticationService,
+		private router: Router
 	) {}
 
 	ngOnInit(): void {
@@ -33,6 +35,8 @@ export class SetlistComponent implements OnInit {
 		this.route.queryParams.subscribe((params) => {
 			const accessToken = params['access_token'];
 			const refreshToken = params['refresh_token'];
+			localStorage.setItem('access_token', '');
+			localStorage.setItem('refresh_token', '');
 			localStorage.setItem('access_token', accessToken);
 			localStorage.setItem('refresh_token', refreshToken);
 		});
@@ -57,16 +61,43 @@ export class SetlistComponent implements OnInit {
 		return this.playlistTitle;
 	}
 
-	createPlaylist() {
+	async createPlaylist() {
+		const playlistRequest = {
+			accessToken: localStorage.getItem('access_token'),
+			trackIds: this.setlist.tracks.map(
+				({ trackId }: { trackId: string }) => `spotify:track:${trackId}`
+			),
+			playlistImageUrl:
+				'https://pub-cdn.apitemplate.io/2023/01/82531486-4ca1-4967-bf45-905374ff6969.jpeg',
+			playlistName: this.playlistTitle,
+			isPrivate: true,
+		};
+		console.log(
+			'playlist Request Body: ' + JSON.stringify(playlistRequest, null, 2)
+		);
+
+		const response = await axios.post(
+			'http://localhost:8080/api/createPlaylist',
+			playlistRequest
+		);
 		console.log('playlist successfull');
 	}
 
 	LoginToSpotify() {
-		const currentUrl = window.location.href;
+		const currentUrl = this.removeQueryParam();
+
 		this.authService.getSpotifyUserLogin(currentUrl).subscribe((data) => {
 			this.response = data;
 			console.log('Login response' + this.response);
 			window.location.href = this.response;
 		});
+	}
+
+	removeQueryParam() {
+		const currentUrl = this.router.url;
+		var modifiedUrl = currentUrl.replace(/\/access_token\/[^\/]+/, '');
+		modifiedUrl = 'http://localhost:4200' + modifiedUrl;
+		console.log('Modified Url: ', modifiedUrl);
+		return modifiedUrl;
 	}
 }
