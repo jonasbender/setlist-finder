@@ -44,10 +44,18 @@
 				<mat-slide-toggle [(ngModel)]="private"></mat-slide-toggle>
 				<span class="slideLabel">Public</span>
 			</div>
-			<div class="createButton" (click)="LoginToSpotify()">
+			<div
+				class="createButton"
+				(click)="LoginToSpotify()"
+				*ngIf="!isAuthenticated()"
+			>
 				Login to save playlist
 			</div>
-			<div class="createButton" (click)="createPlaylist()">
+			<div
+				class="createButton"
+				(click)="createPlaylist()"
+				*ngIf="isAuthenticated()"
+			>
 				Create Playlist
 			</div>
 		</div>

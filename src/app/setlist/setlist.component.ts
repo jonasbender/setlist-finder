@@ -15,7 +15,7 @@ export class SetlistComponent implements OnInit {
 	errorMessage: any;
 	invalidId!: false;
 	playlistTitle!: string;
-	private!: false;
+	private!: boolean;
 	public response: any;
 
 	constructor(
@@ -35,14 +35,17 @@ export class SetlistComponent implements OnInit {
 		this.route.queryParams.subscribe((params) => {
 			const accessToken = params['access_token'];
 			const refreshToken = params['refresh_token'];
-			localStorage.setItem('access_token', '');
-			localStorage.setItem('refresh_token', '');
-			localStorage.setItem('access_token', accessToken);
-			localStorage.setItem('refresh_token', refreshToken);
+			if (accessToken) {
+				localStorage.setItem('access_token', '');
+				localStorage.setItem('refresh_token', '');
+				localStorage.setItem('access_token', accessToken);
+				localStorage.setItem('refresh_token', refreshToken);
+			}
 		});
 
 		this.playlistTitle = this.PlaylistTitleConstructor();
 		console.log(this.playlistTitle);
+		this.private = true;
 	}
 
 	reload() {
@@ -62,6 +65,23 @@ export class SetlistComponent implements OnInit {
 	}
 
 	async createPlaylist() {
+		let accessToken = '';
+		this.checkAccessTokenExpiration();
+		const StoredAccessToken = localStorage.getItem('access_token');
+		const StoredRefreshToken = localStorage.getItem('refresh_token');
+
+		if (
+			StoredAccessToken == null ||
+			(StoredAccessToken == '' && StoredRefreshToken)
+		) {
+			this.requestNewTokens();
+			this.PlaylistRequest();
+		} else {
+			this.PlaylistRequest();
+		}
+	}
+
+	async PlaylistRequest() {
 		const playlistRequest = {
 			accessToken: localStorage.getItem('access_token'),
 			trackIds: this.setlist.tracks.map(
@@ -70,7 +90,7 @@ export class SetlistComponent implements OnInit {
 			playlistImageUrl:
 				'https://pub-cdn.apitemplate.io/2023/01/82531486-4ca1-4967-bf45-905374ff6969.jpeg',
 			playlistName: this.playlistTitle,
-			isPrivate: true,
+			isPrivate: this.private,
 		};
 		console.log(
 			'playlist Request Body: ' + JSON.stringify(playlistRequest, null, 2)
@@ -80,6 +100,7 @@ export class SetlistComponent implements OnInit {
 			'http://localhost:8080/api/createPlaylist',
 			playlistRequest
 		);
+		console.log('Response: ' + response.toString());
 		console.log('playlist successfull');
 	}
 
@@ -91,6 +112,7 @@ export class SetlistComponent implements OnInit {
 			console.log('Login response' + this.response);
 			window.location.href = this.response;
 		});
+		this.setAccessTokenExpiration();
 	}
 
 	removeQueryParam() {
@@ -99,5 +121,49 @@ export class SetlistComponent implements OnInit {
 		modifiedUrl = 'http://localhost:4200' + modifiedUrl;
 		console.log('Modified Url: ', modifiedUrl);
 		return modifiedUrl;
+	}
+
+	checkAccessTokenExpiration() {
+		const expirationTimeString = localStorage.getItem('expirationTime');
+		const expirationTime = expirationTimeString
+			? parseInt(expirationTimeString)
+			: null;
+		if (expirationTime !== null && Date.now() >= expirationTime) {
+			localStorage.setItem('access_token', '');
+			console.log('accessToken removed due to timeout');
+		} else console.log('AccessToken still valid');
+	}
+
+	setAccessTokenExpiration() {
+		const expiresIn = 3500;
+		const expirationTime = Date.now() + expiresIn * 1000;
+		localStorage.setItem('expirationTime', expirationTime.toString());
+	}
+
+	async requestNewTokens() {
+		const refreshToken = localStorage.getItem('refresh_token');
+
+		const response = await axios.get(
+			'http://localhost:8080/api/updateTokens',
+			{
+				params: {
+					refreshToken: refreshToken,
+				},
+			}
+		);
+
+		const accessToken = response.data.accessToken;
+		console.log('new acces token: ' + accessToken);
+		localStorage.setItem('access_token', accessToken);
+
+		this.setAccessTokenExpiration();
+	}
+
+	isAuthenticated() {
+		if (localStorage.getItem('refresh_token')) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 }
