@@ -90,7 +90,7 @@ export class SearchPageComponent {
 				}),
 				switchMap((value) =>
 					this.http
-						.get(`${environment.apiUrl}/api/search/' + value)
+						.get(`${environment.apiUrl}/api/search/` + value)
 						.pipe(
 							finalize(() => {
 								this.isLoading = false;
