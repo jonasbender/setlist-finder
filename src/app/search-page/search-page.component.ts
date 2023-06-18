@@ -17,6 +17,7 @@ import { SearchService } from '../service/search.service';
 import { FormControl } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { environment } from '@environments/environment';
 
 @Component({
 	selector: 'app-search-page',
@@ -89,7 +90,7 @@ export class SearchPageComponent {
 				}),
 				switchMap((value) =>
 					this.http
-						.get('http://localhost:8080/api/search/' + value)
+						.get(`${environment.apiUrl}/api/search/' + value)
 						.pipe(
 							finalize(() => {
 								this.isLoading = false;
