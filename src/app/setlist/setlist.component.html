@@ -34,7 +34,7 @@
 			<div class="duration">{{ setlist.totalDuration }} m</div>
 			<div class="cover">COVER</div>
 			<div class="PlaylistImageWrapper">
-				<img class="playlistImage" src="{{ setlist.artistImageUrl }}" />
+				<img class="playlistImage" [attr.src]="imageUrl" alt="" />
 			</div>
 			<div class="publicToggle">
 				<span class="slideLabel">Private</span>

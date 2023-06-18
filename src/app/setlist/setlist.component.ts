@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SetlistService } from '../service/setlist.service';
 import { AuthenticationService } from '../service/authentication.service';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import axios from 'axios';
+import { environment } from '@environments/environment';
 
 @Component({
 	selector: 'app-setlist',
@@ -17,12 +19,14 @@ export class SetlistComponent implements OnInit {
 	playlistTitle!: string;
 	private!: boolean;
 	public response: any;
+	imageUrl!: SafeResourceUrl;
 
 	constructor(
 		private route: ActivatedRoute,
 		private setlistService: SetlistService,
 		private authService: AuthenticationService,
-		private router: Router
+		private router: Router,
+		private sanitizer: DomSanitizer
 	) {}
 
 	ngOnInit(): void {
@@ -44,8 +48,12 @@ export class SetlistComponent implements OnInit {
 		});
 
 		this.playlistTitle = this.PlaylistTitleConstructor();
-		console.log(this.playlistTitle);
+		console.log('Playlist Title: ' + this.playlistTitle);
 		this.private = true;
+
+		const base64Image = this.setlist.playlistImage;
+		console.log('imageString: ' + base64Image);
+		this.imageUrl = this.sanitizeImageUrl(base64Image);
 	}
 
 	reload() {
@@ -54,6 +62,12 @@ export class SetlistComponent implements OnInit {
 			console.log('setlist: ' + JSON.stringify(this.setlist));
 			this.playlistTitle = this.PlaylistTitleConstructor();
 			console.log(this.playlistTitle);
+
+			this.private = true;
+
+			const base64Image = this.setlist.playlistImage;
+			console.log('imageString: ' + base64Image);
+			this.imageUrl = this.sanitizeImageUrl(base64Image);
 		});
 	}
 
@@ -97,7 +111,7 @@ export class SetlistComponent implements OnInit {
 		);
 
 		const response = await axios.post(
-			'http://localhost:8080/api/createPlaylist',
+			`${environment.apiUrl}/api/createPlaylist`,
 			playlistRequest
 		);
 		console.log('Response: ' + response.toString());
@@ -118,7 +132,7 @@ export class SetlistComponent implements OnInit {
 	removeQueryParam() {
 		const currentUrl = this.router.url;
 		var modifiedUrl = currentUrl.replace(/\/access_token\/[^\/]+/, '');
-		modifiedUrl = 'http://localhost:4200' + modifiedUrl;
+		modifiedUrl = `${environment.frontendUrl}` + modifiedUrl;
 		console.log('Modified Url: ', modifiedUrl);
 		return modifiedUrl;
 	}
@@ -144,7 +158,7 @@ export class SetlistComponent implements OnInit {
 		const refreshToken = localStorage.getItem('refresh_token');
 
 		const response = await axios.get(
-			'http://localhost:8080/api/updateTokens',
+			`${environment.apiUrl}/api/updateTokens`,
 			{
 				params: {
 					refreshToken: refreshToken,
@@ -165,5 +179,10 @@ export class SetlistComponent implements OnInit {
 		} else {
 			return false;
 		}
+	}
+
+	sanitizeImageUrl(base64Image: string): SafeResourceUrl {
+		const imageUrl = 'data:image/png;base64,' + base64Image; // Prefix with appropriate data URL scheme
+		return this.sanitizer.bypassSecurityTrustResourceUrl(imageUrl);
 	}
 }
