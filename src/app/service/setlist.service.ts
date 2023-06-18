@@ -1,20 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+	providedIn: 'root',
 })
 export class SetlistService {
+	constructor(private http: HttpClient) {}
 
-  constructor(
-    private http : HttpClient,
-
-  ) { }
-
-  getSetlist(setlistId: string){
-    return this.http.get(
-      'http://localhost:8080/api/tracks/' + setlistId)
-  }
-
-  
+	getSetlist(setlistId: string) {
+		return this.http.get(`${environment.apiUrl}/api/tracks/` + setlistId);
+	}
 }

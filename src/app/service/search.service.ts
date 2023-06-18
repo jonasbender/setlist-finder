@@ -1,19 +1,15 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+	providedIn: 'root',
 })
 export class SearchService {
-  
+	constructor(private http: HttpClient) {}
 
-  constructor(private http: HttpClient) { }
-
-  getResults(artist: string) {
-
-    return this.http.get(
-      "http://localhost:8080/api/search/"+ artist
-    )
-  }
+	getResults(artist: string) {
+		return this.http.get(`${environment.apiUrl}/api/search/` + artist);
+	}
 }

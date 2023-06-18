@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
 	providedIn: 'root',
@@ -9,7 +10,7 @@ export class AuthenticationService {
 
 	getSpotifyUserLogin(lastViewedUrl: string) {
 		return this.http.get(
-			`http://localhost:8080/api/login?lastViewedUrl=${encodeURIComponent(
+			`${environment.apiUrl}/api/login?lastViewedUrl=${encodeURIComponent(
 				lastViewedUrl
 			)}`,
 			{ responseType: 'text' }
